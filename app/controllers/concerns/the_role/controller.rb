@@ -28,7 +28,7 @@ module TheRole
     def the_role_default_access_denied_response
       access_denied_msg = t(:access_denied, scope: :the_role)
 
-      if request.xhr?
+      if request.xhr? or request.format == :json
         render json: {
           errors: { the_role: [ access_denied_msg ] },
 
