@@ -1,9 +1,8 @@
 require 'the_role_api/hash'
 require 'the_role_api/config'
-require 'the_role_api/version'
 
 require 'multi_json'
-require 'the_string_to_slug'
+require 'to_slug_param'
 
 module TheRole
   module Api; end
@@ -30,15 +29,9 @@ module TheRole
       %w[ base_methods role user ].each do |file|
         require_dependency "#{ app }/models/concerns/the_role/api/#{ file }.rb"
       end
-    end
-
-    if Rails::VERSION::MAJOR == 4
+    else
       config.autoload_paths << "#{ config.root }/app/models/concerns/**"
       config.autoload_paths << "#{ config.root }/app/controllers/concerns/**"
-    end
-
-    if Rails::VERSION::MAJOR == 5
-      raise Exception.new("TheRole 3. Version for Rails 5 not tested yet")
     end
 
     initializer "the_role_precompile_hook", group: :all do |app|

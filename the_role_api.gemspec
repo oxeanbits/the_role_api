@@ -1,6 +1,9 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "the_role_api/version"
+
+module TheRoleApi
+  VERSION = "3.9.0"
+end
 
 Gem::Specification.new do |s|
   s.name        = "the_role_api"
@@ -18,6 +21,6 @@ Gem::Specification.new do |s|
   s.license       = "MIT"
 
   s.add_dependency 'multi_json'
-  s.add_dependency 'the_string_to_slug', '~> 1.2'
-  s.add_runtime_dependency 'rails', ['>= 3.2', '<= 5.2']
+  s.add_dependency 'to_slug_param', '= 1.8'
+  s.add_runtime_dependency 'rails', ['>= 3.2', '< 7']
 end
