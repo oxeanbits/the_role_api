@@ -41,8 +41,8 @@ module TheRole
         attr_accessor :based_on_role
 
         has_many  :users, dependent: TheRole.config.destroy_strategy
-        validates :name,  presence: true, uniqueness: true
-        validates :title, presence: true, uniqueness: true
+        validates :name,  presence: true, uniqueness: { case_sensitive: true }
+        validates :title, presence: true, uniqueness: { case_sensitive: true }
         validates :description, presence: true
 
         private
